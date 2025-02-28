@@ -1,19 +1,13 @@
 from flask import Flask, jsonify, request
+from routes.userRoutes import user_api
+from routes.contactRoutes import contact_api
+
 
 app = Flask(__name__)
 
+app.register_blueprint(user_api)
+app.register_blueprint(contact_api)
 
-@app.route("/", methods=["GET"])
-def index():
-    return "Hello, World!"
-
-@app.route("/usuarios",  methods=["GET"])
-def usuarios():
-    return jsonify([
-        {"id": 1, "nome": "João"},
-        {"id": 2, "nome": "Maria"},
-        {"id": 3, "nome": "José"}
-    ])
 
 
 
